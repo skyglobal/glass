@@ -1,7 +1,7 @@
-[Glass]({{ git.io-URL }})  [![Circle CI](https://circleci.com/gh/{{ git.username }}/glass/tree/master.svg?style=svg)](https://circleci.com/gh/{{ git.username }}/glass/tree/master)
+[Glass](http://skyglobal.github.io/glass)  [![Circle CI](https://circleci.com/gh/skyglobal/glass/tree/master.svg?style=svg)](https://circleci.com/gh/skyglobal/glass/tree/master)
 ========================
 
-> Please take a look at the [demo page]({{ git.io-URL }})
+> Please take a look at the [demo page](http://skyglobal.github.io/glass)
 
 ## Quick-Start
 

@@ -5,7 +5,7 @@
     "main": "src/scripts/glass.js",
     "repository": {
         "type": "git",
-        "url": "{{ git.SSH-URL }}"
+        "url": "git@github.com:skyglobal/glass.git"
     },
     "scripts": {
       "copy": "caddy copy",
@@ -22,5 +22,5 @@
       "web-caddy" : "2.0.0-beta.3",
       "jshint": "^2.6.3"
     },
-    "author": "{{ git.author }}"
+    "author": "Ross Warren"
 }
