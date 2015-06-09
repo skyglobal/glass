@@ -1,0 +1,26 @@
+{
+    "name": "glass",
+    "version": "0.0.0",
+    "description": "Example package.json. Feel free to copy!",
+    "main": "src/scripts/glass.js",
+    "repository": {
+        "type": "git",
+        "url": "{{ git.SSH-URL }}"
+    },
+    "scripts": {
+      "copy": "caddy copy",
+      "build": "caddy build",
+      "bump": "caddy bump",
+      "release": "npm test && caddy release",
+      "report": "caddy serve test/coverage/phantomjs/",
+      "start": "caddy copy && caddy build -dev && caddy serve",
+      "tdd": "caddy test tdd",
+      "test": "jshint src && caddy build && caddy test"
+    },
+    "devDependencies": {
+      "browserify-istanbul": "^0.2.1",
+      "web-caddy" : "2.0.0-beta.3",
+      "jshint": "^2.6.3"
+    },
+    "author": "{{ git.author }}"
+}
