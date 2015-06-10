@@ -28,7 +28,7 @@ Main.prototype.write = function(args){
 //example export
 module.exports = Main;
 },{"./utils/version.js":2}],2:[function(require,module,exports){
-module.exports = "0.0.0";
+module.exports = "0.0.1";
 },{}],"demo":[function(require,module,exports){
 //if you need to intialise anything to get the demo to work...
 var local = {}; local['glass'] = require('../../src/scripts/glass.js');

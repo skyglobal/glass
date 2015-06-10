@@ -1,6 +1,6 @@
-.glimmer {
+.glass {
   position: relative; }
-  .glimmer:after {
+  .glass:after {
     position: absolute;
     border: 5px solid rgba(255, 255, 255, 0.5);
     content: "";
@@ -10,12 +10,12 @@
     top: 0;
     left: 0; }
     @media (max-width: 650px) {
-      .glimmer:after {
+      .glass:after {
         display: none; } }
 
-.glimmer-top {
+.glass-top {
   position: relative; }
-  .glimmer-top:before {
+  .glass-top:before {
     content: '';
     display: block;
     position: absolute;
@@ -26,12 +26,12 @@
     background: rgba(255, 255, 255, 0.3);
     z-index: 9; }
     @media (max-width: 650px) {
-      .glimmer-top:before {
+      .glass-top:before {
         display: none; } }
 
-.glimmer-bottom {
+.glass-bottom {
   position: relative; }
-  .glimmer-bottom:after {
+  .glass-bottom:after {
     content: '';
     display: block;
     position: absolute;
@@ -42,5 +42,5 @@
     background: rgba(255, 255, 255, 0.3);
     z-index: 9; }
     @media (max-width: 650px) {
-      .glimmer-bottom:after {
+      .glass-bottom:after {
         display: none; } }
