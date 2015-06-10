@@ -3,7 +3,7 @@
 
 @import '_mixins';
 
-.glimmer {
+.glass {
     position: relative;
 
     &:after {
@@ -22,7 +22,7 @@
     }
 }
 
-.glimmer-top {
+.glass-top {
     position: relative;
 
     &:before {
@@ -42,7 +42,7 @@
     }
 }
 
-.glimmer-bottom {
+.glass-bottom {
     position: relative;
 
     &:after {
