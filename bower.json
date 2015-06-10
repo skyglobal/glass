@@ -1,0 +1,19 @@
+{
+  "name": "glass",
+  "homepage": "https://github.com/skyglobal/glass.git",
+  "authors": [
+    "Ross Warren <rosswarren4@gmail.com>"
+  ],
+  "description": "Glass",
+  "main": "dist",
+  "license": "BSD3",
+  "ignore": [
+    "**/*",
+    "!dist/**/*",
+    "!src/**/*"
+  ],
+  "devDependencies": {
+    "bskyb-core": "~0.0.4",
+    "gradients": "~0.1.2"
+  }
+}
