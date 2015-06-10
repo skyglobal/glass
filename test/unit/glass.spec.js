@@ -12,11 +12,4 @@ describe('glass module can ', function () {
         expect(new glass().sum([1,2,3])).toBe(6);
 
     });
-
-    it('version is attached', function () {
-
-        expect(new glass().version).toBe('0.0.0');
-
-    });
-
 });
