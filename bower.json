@@ -15,5 +15,8 @@
   "devDependencies": {
     "bskyb-core": "~0.0.4",
     "gradients": "~0.1.2"
+  },
+  "dependencies": {
+    "gradients": "~0.1.2"
   }
 }
