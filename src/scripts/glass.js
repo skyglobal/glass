@@ -14,8 +14,10 @@ Glass.initialise = function() {
         var distanceFromTop = shineElements[i].parentNode.offsetTop - window.innerHeight;
 
         if (i % 2 === 0) {
+            shineElements[i].classList.add('left');
             animations.push(new Animation(shineElements[i], distanceFromTop, window.innerHeight, { x: window.innerWidth - 211, y: 0 }, { x: -211, y: 0}));
         } else {
+            shineElements[i].classList.add('right');
             animations.push(new Animation(shineElements[i], distanceFromTop, window.innerHeight, { x: -211, y: 0 }, { x: window.innerWidth - 211, y: 0}));
         }
     }
