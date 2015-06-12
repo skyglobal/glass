@@ -1,32 +1,111 @@
 require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports = "0.0.1";
-},{}],"glass":[function(require,module,exports){
-// By default JS dependency is handled using CommonJS and browserify
-// please see 'docs/API.md#scripts' for more info
-//
-// You may need other components. i.e. Run and uncomment the following :
-// $ bower install dependency-name --save
-// var dependency = require('../../bower_components/dependency-name/src/scripts/index');
+'use strict';
 
+function Animation(element, start, duration, initialPosition, destinationPosition, threshold) {
+    this.element = element;
+    this.start = start;
+    this.duration = duration;
+    this.initialPosition = initialPosition;
+    this.destinationPosition = destinationPosition;
+    this.threshold = threshold;
 
-//example function
-function Main(){
-    this.version = require('./utils/version.js');//keep this : each component exposes its version
+    if (this.threshold === undefined) {
+        this.threshold = 0;
+    }
 }
 
-Main.prototype.sum = function(args){
-    var total = 0;
-    args.forEach(function(int){
-        total += int;
-    });
-    return total;
+Animation.prototype.updateStyle = function() {
+    var yPosition = doCalculation(this.start, this.duration, this.initialPosition.y, this.destinationPosition.y);
+    var xPosition = doCalculation(this.start, this.duration, this.initialPosition.x, this.destinationPosition.x);
+
+    setTranslate3D(this.element, xPosition, yPosition, 0);
+    this.element.style.msTransform = 'translate(' + xPosition + 'px, ' + yPosition + 'px)';
 };
 
-Main.prototype.write = function(args){
-  document.getElementById('demo-functional').innerHTML = this.sum(args);
+Animation.prototype.tick = function() {
+    this.updateStyle();
 };
 
+function setPrefixedTransforms(element, transformValue) {
+    element.style.transform = transformValue;
+    element.style.OTransform = transformValue;
+    element.style.MozTransform = transformValue;
+    element.style.webkitTransform = transformValue;
+    element.style.msTransform = transformValue;
+}
 
-//example export
-module.exports = Main;
-},{"./utils/version.js":1}]},{},["glass"]);
+function setTranslate3D(element, x, y, z) {
+    setPrefixedTransforms(element, 'translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px)');
+}
+
+function doCalculation(start, duration, initial, destination) {
+    var x1 = parseFloat(start),
+        y1 = parseFloat(initial),
+        x2 = parseFloat(start + duration),
+        y2 = parseFloat(destination),
+        x = window.pageYOffset,
+        y = (( y2-y1 )*( x-x1 )+( x2*y1 ) - ( x1*y1 ))/( x2-x1 );
+
+    return y;
+}
+
+module.exports = Animation;
+
+},{}],2:[function(require,module,exports){
+function ready(fn) {
+    if (document.readyState != 'loading'){
+        fn();
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', fn);
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+            if (document.readyState != 'loading') {
+                fn();
+            }
+        });
+    }
+}
+
+module.exports = ready;
+
+},{}],"glass":[function(require,module,exports){
+var Animation = require('./Animation');
+var ready = require('./utils/ready');
+
+function Glass() {
+
+}
+
+Glass.initialise = function() {
+    var animations = [];
+
+    var shineElements = document.querySelectorAll('.shine');
+
+    for (var i = 0; i < shineElements.length; i++) {
+        var distanceFromTop = shineElements[i].parentNode.offsetTop - window.innerHeight;
+
+        if (i % 2 === 0) {
+            shineElements[i].classList.add('left');
+            animations.push(new Animation(shineElements[i], distanceFromTop, window.innerHeight, { x: window.innerWidth - 211, y: 0 }, { x: -211, y: 0}));
+        } else {
+            shineElements[i].classList.add('right');
+            animations.push(new Animation(shineElements[i], distanceFromTop, window.innerHeight, { x: -211, y: 0 }, { x: window.innerWidth - 211, y: 0}));
+        }
+    }
+
+    function step() {
+
+        for (var i = 0; i < animations.length; i++) {
+            animations[i].tick();
+        }
+
+
+        window.requestAnimationFrame(step);
+    }
+
+    window.requestAnimationFrame(step);
+};
+
+module.exports = Glass;
+
+},{"./Animation":1,"./utils/ready":2}]},{},["glass"]);

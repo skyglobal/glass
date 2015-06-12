@@ -60,7 +60,6 @@
 
 .shine {
   position: absolute;
-  left: 40%;
   width: 120%;
   height: 46px;
   background-color: transparent;
@@ -72,6 +71,12 @@
   -ms-transform: translate3d(0px, 0px, 0px);
   -webkit-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px); }
+
+.shine.left {
+  left: 680px; }
+
+.shine.right {
+  left: 0; }
 
 .shine.top {
   top: -18px; }
