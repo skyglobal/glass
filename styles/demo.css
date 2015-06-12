@@ -327,7 +327,9 @@ div.small-rectangle {
   position: relative; }
 
 div.large-rectangle {
-  height: 285px;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
   background-image: url('../images/fury.jpg');
   padding: 15px;
   margin-bottom: 30px; }
