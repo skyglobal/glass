@@ -1,2 +1,8 @@
 //if you need to intialise anything to get the demo to work...
-var local = {}; local['glass'] = require('../../src/scripts/glass.js');
+
+require('polyfill/src/scripts/polyfill');
+
+var ready = require('../../src/scripts/utils/ready.js');
+var Glass = require('../../src/scripts/glass.js');
+
+ready(Glass.initialise);
