@@ -15,8 +15,8 @@ module.exports = {
         release: ['git', 'gh-pages', 'bower']
     },
     karma:{
-        functional: './test/karma.functional.js',
-        unit: './test/karma.unit.js',
+        functional: false,
+        unit: false,
         unitCoverage: './test/coverage/summary.json'
     }
 };
