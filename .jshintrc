@@ -1,6 +1,7 @@
 {
   "undef": true,
   "expr": true,
+  "browserify": true,
   "globals": {
     "console": true,
     "require": true,
