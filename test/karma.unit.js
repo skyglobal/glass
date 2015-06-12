@@ -3,26 +3,10 @@ module.exports = function(config) {
         basePath: '..',
         browsers: ['PhantomJS'],
         frameworks: ['browserify', 'jasmine'],
-        reporters: ['progress', 'coverage'],
+        reporters: ['progress'],
         preprocessors: {
             'test/unit/**/*.js': ['browserify'],
             '_site/*.html': ['html2js']
-        },
-        coverageReporter: {
-            dir : 'test/coverage/',
-            reporters: [
-                { type: 'html',
-                    subdir: function(browser) {
-                        return browser.toLowerCase().split(/[ /-]/)[0];
-                    },
-                    watermarks: {
-                        statements: [75, 85],
-                        lines: [75, 85],
-                        functions: [75, 85],
-                        branches:[75, 85]
-                    }},
-                { type: 'json-summary', subdir: '.', file: 'summary.json' },
-            ]
         },
         files: [
             {pattern: '_site/**/vendor.*', included: true, served: true, watched: true},
